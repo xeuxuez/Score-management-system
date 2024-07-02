@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block styles %}
+<link href="/static/grade_list.css" rel="stylesheet" />
+{% endblock %}
+
+
+{% block page_content %}
+<div class="paper">
+    <table>
+        <tr>
+            <th>班次号</th>
+            <th>班次名</th>
+            <th>学期</th>
+            <th>地点</th>
+            <th>课程名</th>
+        </tr>
+        {% for classe in classesl %}
+        <tr>
+            <td>{{ classe.cla_no }}</td>
+            <td>{{ classe.cla_name }}</td>
+            <td>{{ classe.cla_term }}</td>
+            <td>{{ classe.cla_place }}</td>
+            <td>{{ classe.cla_course }}</td>   
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

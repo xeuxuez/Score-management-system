@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block styles %}
+<link href="/static/grade_list.css" rel="stylesheet" />
+{% endblock %}
+
+
+{% block page_content %}
+<div class="paper">
+    <form class="grade-form" action="/action/cousel/add" method="post">
+        <label>班次：</label>
+        <select name="cla_sn">
+            <option value="">--选择--</option>
+            {% for cla in classesl %}
+            <option value="{{cla.cla_sn}}">
+                {{cla.cla_name}}({{cla.cla_sn}})
+            </option>
+            {% endfor %}
+        </select>
+
+        <label>学生：</label>
+        <select name="stu_sn">
+            <option value="">--选择--</option>
+            {% for stu in students %}
+            <option value="{{stu.stu_sn}}">
+                {{stu.stu_name}}({{stu.stu_sn}})
+            </option>
+            {% endfor %}
+        </select>
+
+        <label>成绩：</label>
+        <input type="text" name="grade" />
+
+        <input type="submit" value="添加成绩" />
+    </form>
+    <hr />
+    <table>
+        <tr>
+            <th>班次</th>
+            <th>姓名</th>
+            <th>成绩</th>
+            <th>操作</th>
+        </tr>
+        {% for item in items %}
+        <tr>
+            <td>{{ item.cla_name }}</td>
+            <td>{{ item.stu_name }}</td>
+            <td>{{ item.grade }}</td>
+            <td>
+                <div class="ctrlbar">
+                    <div class="btn">
+                        <a href="/cousel/edit/{{item.cla_sn}}/{{item.stu_sn}}">
+                            修改
+                        </a>
+                    </div>
+                    <div class="btn">
+                        <a href="/cousel/delete/{{item.cla_sn}}/{{item.stu_sn}}">
+                            删除
+                        </a>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

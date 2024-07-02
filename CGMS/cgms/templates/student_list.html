@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+
+{% block styles %}
+<link href="/static/grade_list.css" rel="stylesheet" />
+{% endblock %}
+
+
+{% block page_content %}
+<div class="paper">
+    <h3>学生名单管理</h3>
+    <table>
+        <tr>
+            <th>序号</th>
+            <th>学号</th>
+            <th>姓名</th>
+            <th>操作</th>
+        </tr>
+        {% for item in items %}
+        <tr>
+            <td>{{ item.sn }}</td>
+            <td>{{ item.no }}</td>
+            <td>{{ item.name }}</td>
+            <td>
+                <div class="ctrlbar">
+                    <div class="btn">
+                        <a href="/detail/{{ item.sn }}">
+                            成绩详情
+                        </a>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+<!--  -->
+{% block styles %}
+<link href="/static/dialog_error.css" rel="stylesheet" />
+{% endblock %}
+
+<!--  -->
+{% block page_content %}
+<div class="panel">
+
+    <div class="dialog">
+        <div class="content">
+            <span>确认删除“{{record.stu_name}}”的《{{record.cla_name}}》的成绩({{record.grade}})?</span>
+        </div>
+        <div class="footer">
+            <div class="btn">
+                <form action="/action/cousel/delete/{{record.cla_sn}}/{{record.stu_sn}}" method="post">
+                    <input type="submit" value="删除" />
+                </form>
+            </div>
+            <div class="btn">
+                <a href="/cousel">返回</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

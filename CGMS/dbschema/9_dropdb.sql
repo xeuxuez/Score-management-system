@@ -1,0 +1,5 @@
+DROP DATABASE IF EXISTS examdb;
+
+DROP ROLE IF EXISTS examdb; 
+
+

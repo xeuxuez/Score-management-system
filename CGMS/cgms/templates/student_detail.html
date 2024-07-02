@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block styles %}
+<link href="/static/grade_list.css" rel="stylesheet" />
+<style>
+    .print-button {
+        margin-bottom: 10px;
+    }
+    .paper {
+        page-break-inside: avoid;
+        width: 100%;
+        margin: 20px 0;
+        padding: 10px;
+        background-color: #fff;
+        box-shadow: 0 0 10px rgba(23, 143, 167, 0.1);
+    }
+</style>
+{% endblock %}
+
+{% block page_content %}
+<div class="paper">
+    <h3>{{ studen }}成绩详情</h3>
+    <table>
+        <tr>
+            <th>班次成绩</th>
+            <th>课程成绩</th>
+        </tr>
+   
+        <tr>
+            <td>{{ record1 }}</td>
+            <td>{{ record }}</td>
+        </tr>
+    </table>
+</div>
+
+<button class="print-button" onclick="printPage()">打印成绩单</button>
+
+<script>
+function printPage() {
+    var originalContents = document.body.innerHTML;
+    var printContents = document.querySelector('.paper').innerHTML;
+    document.body.innerHTML = printContents;
+    window.print();
+    document.body.innerHTML = originalContents;
+}
+</script>
+{% endblock %}
